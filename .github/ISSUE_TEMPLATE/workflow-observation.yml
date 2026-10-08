@@ -1,0 +1,52 @@
+name: Workflow observation / 使用反馈
+description: Report what happened while planning or exporting an article.
+title: "[Workflow] "
+body:
+  - type: dropdown
+    id: edition
+    attributes:
+      label: Where did you try it? / 使用版本
+      options:
+        - Browser demo / 网页体验
+        - Local app / 本地版
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Article platform / 文章平台
+      options:
+        - X Articles
+        - Quora Answers
+        - Medium
+        - LinkedIn Articles
+        - Substack
+        - No platform selected / 尚未选择
+    validations:
+      required: true
+  - type: textarea
+    id: goal
+    attributes:
+      label: What were you trying to do? / 想完成什么
+      description: Describe your task without sharing unpublished article text or credentials.
+      placeholder: I tried to turn a creator IP into three platform-specific article plans.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps and observed result / 操作步骤与实际结果
+      placeholder: Which controls did you use, and what happened?
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result or useful improvement / 期望结果或改进建议
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Optional context / 可选信息
+      description: Browser and version, app version, or a redacted screenshot. Do not include API keys, private drafts, or account data.

@@ -258,7 +258,7 @@ if(staticDemo){
   const note=$('demo-note');note.hidden=false;note.append(document.createTextNode(' '));
   const download=document.createElement('a');download.id='demo-download';download.href='https://github.com/LydiaTools/longform-atlas/releases/latest';download.rel='noreferrer';note.append(download);
   note.append(document.createTextNode(' · '));
-  const feedback=document.createElement('a');feedback.id='demo-feedback';feedback.href='https://github.com/LydiaTools/longform-atlas/issues/new';feedback.rel='noreferrer';note.append(feedback);
+  const feedback=document.createElement('a');feedback.id='demo-feedback';feedback.href='https://github.com/LydiaTools/longform-atlas/issues/new?template=workflow-observation.yml';feedback.rel='noreferrer';note.append(feedback);
   document.querySelector('.provider').hidden=true;
   $('batch-generate').hidden=true;$('export-batch').hidden=true;$('generate').hidden=true;
 }

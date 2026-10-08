@@ -28,7 +28,7 @@ The built-in sample demonstrates the workflow; it is not a claim of published re
 
 ## Quick start
 
-**[Try the browser demo](https://lydiatools.github.io/longform-atlas/)** — plan a creator IP, build platform-specific topics, download the plan and export an offline outline. The public demo has no model connection or article-generation button; use the local app for full AI drafts. [Share feedback](https://github.com/LydiaTools/longform-atlas/issues/new).
+**[Try the browser demo](https://lydiatools.github.io/longform-atlas/)** — plan a creator IP, build platform-specific topics, download the plan and export an offline outline. The public demo has no model connection or article-generation button; use the local app for full AI drafts. [Share a workflow observation](https://github.com/LydiaTools/longform-atlas/issues/new?template=workflow-observation.yml).
 
 **[Download v0.2.0 ZIP](https://github.com/LydiaTools/longform-atlas/releases/download/v0.2.0/longform-atlas-v0.2.0.zip)** · [Release notes](https://github.com/LydiaTools/longform-atlas/releases/tag/v0.2.0)
 
