@@ -8,11 +8,15 @@
 
 ## 立即体验
 
-电脑安装 Python 3.9 或更新版本后，在仓库目录执行：
+**[下载 v0.2.0 ZIP](https://github.com/LydiaTools/longform-atlas/releases/download/v0.2.0/longform-atlas-v0.2.0.zip)** · [查看版本说明](https://github.com/LydiaTools/longform-atlas/releases/tag/v0.2.0)
+
+解压后进入 `longform-atlas-v0.2.0` 文件夹。电脑安装 Python 3.9 或更新版本后，在该文件夹执行：
 
 ```bash
 python3 app.py
 ```
+
+Windows 可双击 `start-windows.bat`；macOS 可运行 `start-mac.command`。
 
 浏览器打开 `http://127.0.0.1:8765`，点击「载入示例 IP 与选题」「生成长文选题计划」，再选一篇「放入单篇编辑器」「离线生成大纲」。这几步不需要 API 密钥。想生成完整初稿时，在「可选写作模型」中填写自己的兼容 API 地址、模型与密钥。批量写作最多选三篇，并须逐篇补充证据；每篇独立成稿，结果保存在本机，失败时停止，不自动重试。
 

@@ -28,7 +28,9 @@ The built-in sample demonstrates the workflow; it is not a claim of published re
 
 ## Quick start
 
-Requires Python 3.9+; no Python packages or build step.
+**[Download v0.2.0 ZIP](https://github.com/LydiaTools/longform-atlas/releases/download/v0.2.0/longform-atlas-v0.2.0.zip)** · [Release notes](https://github.com/LydiaTools/longform-atlas/releases/tag/v0.2.0)
+
+Unzip the download. Requires Python 3.9+; no Python packages or build step. From the extracted `longform-atlas-v0.2.0` folder, run:
 
 ```bash
 python3 app.py
