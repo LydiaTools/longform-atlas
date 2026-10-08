@@ -136,10 +136,11 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         routes = {"/": ("index.html", "text/html"), "/style.css": ("style.css", "text/css"), "/app.js": ("app.js", "text/javascript")}
-        if self.path not in routes:
+        path = urlparse(self.path).path
+        if path not in routes:
             self.send_error(404)
             return
-        name, mime = routes[self.path]
+        name, mime = routes[path]
         body = (ROOT / name).read_bytes()
         if name == "index.html":
             body = body.replace(b"__LOCAL_TOKEN__", self.token.encode())

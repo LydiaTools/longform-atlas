@@ -1,5 +1,6 @@
 const I18N={
   en:{
+    demoBadge:'Browser demo · offline planning',demoNote:'Try creator-IP positioning, article planning and offline outlines here. Full AI drafting runs only in the downloadable local app.',demoDownload:'Download local app',
     brandCaption:'Global longform SEO · creator IP',localBadge:'Local-first · manual publishing',workspaceLabel:'Writing route',navIp:'Define your IP',navBrief:'Shape each angle',navSources:'Check the evidence',navDraft:'Write & export',asideHelp:'A repeatable voice comes from a clear audience and real evidence, not repeated keywords.',
     introKicker:'From positioning to article',hero:'Build an IP. Write what it can own.',heroCopy:'Turn your keywords into a focused creator identity and a small pipeline of evidence-led drafts for X Articles, Quora, Medium, LinkedIn or Substack.',sample:'Load a sample IP and brief',
     ipHeading:'Your creator IP',ipHelp:'Choose a role or describe your own. Keywords suggest directions; you confirm the positioning before drafting.',ipNameLabel:'Creator or brand name',ipTypeLabel:'IP route',ipAudienceLabel:'Who you help',ipKeywordsLabel:'Core keywords or questions (comma or new line)',ipProofLabel:'Real experience or proof you can use (optional)',ipPositioningLabel:'Positioning statement — edit before use',ipVoiceLabel:'Writing voice',targetsLabel:'Plan for these platforms',suggestIp:'Suggest positioning from keywords',buildPlan:'Build article plan',ipPreviewLabel:'Your current positioning',ipPreviewEmpty:'Add keywords and an audience, then suggest or write your positioning.',ipSuggested:'Positioning suggestion added. Edit it to match your real experience.',ipMissing:'Enter at least one keyword and an audience to suggest positioning.',planMissing:'Add keywords, positioning, and at least one platform first.',planReady:'Plan ready. Add specific evidence to each brief before batch drafting.',planEvidenceLabel:'Evidence for this article',planSourceLabel:'Source URL for this article (optional)',usePlan:'Use in editor',batchGenerate:'Draft selected briefs (max 3)',exportBatch:'Download completed drafts',batchMissing:'Select up to 3 briefs with their own evidence, then enter a provider URL, model and API key.',batchRunning:'Drafting {n} of {total} with your model…',batchDone:'Saved {n} draft(s) locally. Review every claim before publishing.',batchFailed:'Stopped after {n} draft(s): {reason}',batchEmpty:'No completed batch drafts to download.',planDrafted:'Draft saved',ipTypePractitioner:'Practitioner',ipTypeBuilder:'Tool builder',ipTypeResearch:'Research curator',ipTypeBuyer:'Buyer guide',ipVoicePractical:'Practical',ipVoiceAnalytical:'Analytical',ipVoiceWarm:'Warm',
@@ -18,6 +19,7 @@ const I18N={
     auditResult:'{words} words · {headings} headings · {sources} sources · key phrase: {query}. {notes}',auditNoQuery:'not set',auditNoEvidence:'Add evidence or first-hand examples.',auditNoSources:'Add source links for claims.',auditShort:'Below your target length; expand only where you have substance.',auditReady:'Structure check complete; factual review still needs a human.'
   },
   zh:{
+    demoBadge:'网页体验 · 离线规划',demoNote:'在这里体验 IP 定位、跨平台选题和离线大纲。完整 AI 写稿只在可下载的本地版运行。',demoDownload:'下载本地版',
     brandCaption:'海外长文 SEO 量产 · IP 定位',localBadge:'本地优先 · 手动发布',workspaceLabel:'写作路线',navIp:'确定 IP 定位',navBrief:'确定单篇角度',navSources:'核对证据',navDraft:'写作与导出',asideHelp:'稳定的人设来自清晰受众和真实材料，而不是重复堆关键词。',
     introKicker:'从 IP 定位到长文',hero:'先定你的 IP，再写它该写的文章。',heroCopy:'输入关键词、选择内容人设，生成围绕同一定位的选题计划，再为 X、Quora、Medium、LinkedIn 或 Substack 写出有证据的长文。',sample:'载入示例 IP 与选题',
     ipHeading:'你的内容 IP',ipHelp:'选择创作方向，或自己写定位。关键词只提供方向，稿件前由你确认真实经历与身份。',ipNameLabel:'创作者或品牌名',ipTypeLabel:'IP 类型',ipAudienceLabel:'服务谁',ipKeywordsLabel:'核心关键词或问题（逗号或换行分隔）',ipProofLabel:'可使用的真实经验或证明（可选）',ipPositioningLabel:'定位陈述——使用前请修改',ipVoiceLabel:'表达风格',targetsLabel:'计划投放平台',suggestIp:'根据关键词建议 IP 定位',buildPlan:'生成长文选题计划',ipPreviewLabel:'当前 IP 定位',ipPreviewEmpty:'先填关键词和受众，再生成或自己填写定位。',ipSuggested:'已填入定位建议，请根据自己的真实经验修改。',ipMissing:'请先填写至少一个关键词和目标受众。',planMissing:'请先填写关键词、IP 定位，并至少选择一个平台。',planReady:'选题计划已生成。批量写稿前，请为每篇补充具体证据。',planEvidenceLabel:'这篇文章的证据',planSourceLabel:'这篇文章的来源链接（可选）',usePlan:'放入单篇编辑器',batchGenerate:'批量生成选中的初稿（最多 3 篇）',exportBatch:'下载已完成初稿',batchMissing:'最多选择 3 篇，并逐篇填写证据；再填模型地址、模型和 API 密钥。',batchRunning:'正在用你的模型写第 {n}/{total} 篇…',batchDone:'已保存 {n} 篇初稿到本机。发布前请逐条核对。',batchFailed:'完成 {n} 篇后停止：{reason}',batchEmpty:'还没有可下载的批量初稿。',planDrafted:'初稿已保存',ipTypePractitioner:'实操经验型',ipTypeBuilder:'工具构建型',ipTypeResearch:'研究整理型',ipTypeBuyer:'购买决策型',ipVoicePractical:'实用直接',ipVoiceAnalytical:'分析严谨',ipVoiceWarm:'亲切易懂',
@@ -54,6 +56,7 @@ const $=id=>document.getElementById(id);
 let lang='en';
 let lastStatusKey='',lastStatusError=false;
 let plans=[];
+const staticDemo=document.querySelector('meta[name="local-token"]').content==='__LOCAL_TOKEN__';
 const tr=key=>I18N[lang][key];
 const fields=['ip-name','ip-type','ip-audience','ip-keywords','ip-proof','ip-positioning','ip-voice','topic','audience','platform','angle','evidence','query','intent','canonical','output-language','words','base-url','model','draft'];
 const PLATFORM_GUIDES={
@@ -61,12 +64,13 @@ const PLATFORM_GUIDES={
   zh:{x:'X Articles：发布长文需要符合条件的 Premium、Business 或 Organization 资格。',quora:'Quora：直接回答真实问题；披露相关利益关系，正文不依赖跳转外链才能看懂。',medium:'Medium：适合发布故事；转载自己网站的内容时设置 canonical 原文链接。',linkedin:'LinkedIn：个人可发布文章，并设置 SEO 标题和描述。',substack:'Substack：网页文章兼 newsletter；发布时可决定是否邮件推送。'}
 };
 const platformName={x:'X Articles',quora:'Quora Answers',medium:'Medium',linkedin:'LinkedIn Articles',substack:'Substack'};
-function keywordList(){return [...new Set($('ip-keywords').value.split(/[,，;；\n]+/).map(x=>x.trim()).filter(Boolean))].slice(0,6);}
+function keywordList(){return [...new Set($('ip-keywords').value.split(/[,，、;；\n]+/).map(x=>x.trim()).filter(Boolean))].slice(0,6);}
 function selectedTargets(){return [...document.querySelectorAll('input[name="target"]:checked')].map(x=>x.value);}
 function ipProfile(){return {name:$('ip-name').value.trim(),type:$('ip-type').value,audience:$('ip-audience').value.trim(),keywords:keywordList(),proof:$('ip-proof').value.trim(),positioning:$('ip-positioning').value.trim(),voice:$('ip-voice').value};}
 function updateIpPreview(){$('ip-preview-text').textContent=$('ip-positioning').value.trim()||tr('ipPreviewEmpty');}
 function setLanguage(next){
   lang=next;document.documentElement.lang=lang;$('language').textContent=lang==='en'?'中文':'English';for(const [id,key] of Object.entries(ids))$(id).textContent=tr(key);
+  if(staticDemo){$('local-badge').textContent=tr('demoBadge');$('demo-note').firstChild.textContent=tr('demoNote')+' ';$('demo-note').querySelector('a').textContent=tr('demoDownload');}
   const typeKeys=['ipTypePractitioner','ipTypeBuilder','ipTypeResearch','ipTypeBuyer'];[...$('ip-type').options].forEach((o,i)=>o.textContent=tr(typeKeys[i]));
   const voiceKeys=['ipVoicePractical','ipVoiceAnalytical','ipVoiceWarm'];[...$('ip-voice').options].forEach((o,i)=>o.textContent=tr(voiceKeys[i]));
   document.querySelectorAll('.source-row').forEach(updateSourcePlaceholders);$('platform-guide').textContent=PLATFORM_GUIDES[lang][$('platform').value];updateIpPreview();renderPlans();if(lastStatusKey)status(lastStatusKey,lastStatusError);localStorage.setItem('la-lang',lang);
@@ -150,6 +154,7 @@ function usePlan(plan){
 }
 function format(text,vars){return Object.entries(vars).reduce((value,[key,item])=>value.replace('{'+key+'}',item),text);}
 async function batchGenerate(){
+  if(staticDemo)return;
   const selected=plans.filter(p=>p.selected);
   const provider=state();const apiKey=$('api-key').value.trim();
   if(!selected.length||selected.length>3||selected.some(p=>!p.evidence.trim())||!provider.baseUrl||!provider.model||!apiKey){$('batch-status').textContent=tr('batchMissing');return;}
@@ -184,6 +189,7 @@ function outline(){
   $('draft').value=text.join('\n');save();status('outlineReady');
 }
 async function generate(){
+  if(staticDemo)return;
   const d=state();if(!d.topic||!d.audience||!d.angle){status('missing',true);return;}
   d.apiKey=$('api-key').value.trim();if(!d.baseUrl||!d.model||!d.apiKey){status('apiMissing',true);return;}
   $('generate').disabled=true;status('generating');
@@ -204,7 +210,9 @@ function restore(){
     for(const s of data.sources||[])sourceRow(s.url,s.note);
     const stored=JSON.parse(localStorage.getItem('la-plans')||'[]');if(Array.isArray(stored))plans=stored.filter(p=>p&&typeof p==='object').slice(0,12);
   }catch{}
-  if(!document.querySelector('.source-row'))sourceRow();setLanguage(localStorage.getItem('la-lang')||'en');
+  if(!document.querySelector('.source-row'))sourceRow();
+  const requestedLanguage=new URLSearchParams(location.search).get('lang');
+  setLanguage(requestedLanguage==='zh'||requestedLanguage==='en'?requestedLanguage:localStorage.getItem('la-lang')||'en');
 }
 for(const id of fields)$(id).addEventListener('input',save);
 $('ip-positioning').addEventListener('input',updateIpPreview);
@@ -213,6 +221,7 @@ $('platform').addEventListener('change',()=>{$('platform-guide').textContent=PLA
 $('language').onclick=()=>setLanguage(lang==='en'?'zh':'en');
 $('add-source').onclick=()=>{sourceRow();save();};
 $('sample').onclick=()=>{
+  $('output-language').value=lang;
   $('ip-name').value='CoverCalc Pro';$('ip-type').value='tool-builder';$('ip-audience').value=tr('sampleAudience');$('ip-keywords').value=lang==='en'?'mulch bag calculator, garden bed depth, bulk vs bags':'覆盖物袋数计算、花坛铺设厚度、散装与袋装对比';$('ip-proof').value=tr('sampleEvidence');
   $('ip-positioning').value=lang==='en'?'CoverCalc Pro helps DIY homeowners check measurements, bag quantities and supplier rules before buying landscape materials.':'CoverCalc Pro 帮助家庭园艺用户在购买材料前核对尺寸、袋数与供应商起订规则。';updateIpPreview();
   $('topic').value=tr('sampleTopic');$('audience').value=tr('sampleAudience');$('angle').value=tr('sampleAngle');$('evidence').value=tr('sampleEvidence');$('query').value=lang==='en'?'mulch bag calculator':'覆盖物袋数计算';save();status('sampleLoaded');
@@ -227,4 +236,10 @@ $('audit-button').onclick=()=>{
   const notes=[];if(!d.evidence)notes.push(tr('auditNoEvidence'));if(!d.sources.length)notes.push(tr('auditNoSources'));if(words<d.words*0.65)notes.push(tr('auditShort'));if(!notes.length)notes.push(tr('auditReady'));
   $('audit').textContent=tr('auditResult').replace('{words}',words).replace('{headings}',headings).replace('{sources}',d.sources.length).replace('{query}',d.query||tr('auditNoQuery')).replace('{notes}',notes.join(' '));
 };
+if(staticDemo){
+  const note=$('demo-note');note.hidden=false;note.append(document.createTextNode(' '));
+  const download=document.createElement('a');download.href='https://github.com/LydiaTools/longform-atlas/releases/latest';download.rel='noreferrer';download.textContent='Download local app';note.append(download);
+  document.querySelector('.provider').hidden=true;
+  $('batch-generate').hidden=true;$('export-batch').hidden=true;$('generate').hidden=true;
+}
 restore();

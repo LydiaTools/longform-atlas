@@ -28,6 +28,8 @@ The built-in sample demonstrates the workflow; it is not a claim of published re
 
 ## Quick start
 
+**[Try the browser demo](https://lydiatools.github.io/longform-atlas/)** — plan a creator IP, build platform-specific topics and export an offline outline. The public demo has no model connection or article-generation button; use the local app for full AI drafts.
+
 **[Download v0.2.0 ZIP](https://github.com/LydiaTools/longform-atlas/releases/download/v0.2.0/longform-atlas-v0.2.0.zip)** · [Release notes](https://github.com/LydiaTools/longform-atlas/releases/tag/v0.2.0)
 
 Unzip the download. Requires Python 3.9+; no Python packages or build step. From the extracted `longform-atlas-v0.2.0` folder, run:

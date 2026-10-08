@@ -8,6 +8,8 @@
 
 ## 立即体验
 
+**[打开中文网页体验](https://lydiatools.github.io/longform-atlas/?lang=zh)**：无需安装即可试 IP 定位、跨平台选题和离线大纲。网页体验不连接模型，也不提供完整文章生成；完整写稿请下载本地版。
+
 **[下载 v0.2.0 ZIP](https://github.com/LydiaTools/longform-atlas/releases/download/v0.2.0/longform-atlas-v0.2.0.zip)** · [查看版本说明](https://github.com/LydiaTools/longform-atlas/releases/tag/v0.2.0)
 
 解压后进入 `longform-atlas-v0.2.0` 文件夹。电脑安装 Python 3.9 或更新版本后，在该文件夹执行：
