@@ -14,6 +14,20 @@ MAX_BODY = 100_000
 PLATFORMS = {"x", "medium", "quora", "linkedin", "substack"}
 
 
+def clean_ip_profile(value):
+    if value is None:
+        return {}
+    if not isinstance(value, dict):
+        raise ValueError("IP profile must be an object.")
+    fields = {"name": 120, "type": 60, "audience": 250, "positioning": 1200, "proof": 2000, "voice": 60}
+    profile = {key: str(value.get(key, "")).strip()[:limit] for key, limit in fields.items()}
+    keywords = value.get("keywords", [])
+    if not isinstance(keywords, list) or len(keywords) > 12:
+        raise ValueError("Use at most 12 IP keywords.")
+    profile["keywords"] = [str(item).strip()[:120] for item in keywords if str(item).strip()]
+    return profile
+
+
 def build_messages(data):
     if not isinstance(data, dict):
         raise ValueError("Provide an article brief object.")
@@ -47,19 +61,20 @@ def build_messages(data):
         if url or note:
             clean_sources.append({"url": url, "note": note})
     language = "English" if data.get("outputLanguage") != "zh" else "Chinese"
+    ip_profile = clean_ip_profile(data.get("ipProfile"))
     platform_notes = {
-        "x": "Format for an X Article: strong specific hook, section headings, skimmable paragraphs and a final discussion prompt. Do not promise reward eligibility.",
-        "medium": "Format for a Medium story: clear title, contextual introduction, useful sections, original examples and a thoughtful close. If republishing, include a canonical-source reminder outside the prose.",
-        "quora": "Format as a direct answer to a reader question, with the answer near the top and evidence thereafter.",
-        "linkedin": "Format as a professional article with practical examples, accessible headings and a concise takeaway.",
-        "substack": "Format as a newsletter essay: an opening note, focused argument, section headings and a reader-facing close.",
+        "x": "Format for an X Article: a specific hook, section headings, skimmable paragraphs and a discussion prompt. Do not promise X monetization eligibility.",
+        "medium": "Format for a Medium story: a clear title, useful sections, original examples and a thoughtful close. If republishing, remind the editor to set the canonical source outside the article body.",
+        "quora": "Answer the exact reader question directly near the top, then explain with evidence. Keep the answer useful without an external click. Disclose relevant affiliations; do not insert affiliate links or unrelated promotion.",
+        "linkedin": "Format as a professional article with practical examples, accessible headings, a concise takeaway, and an editorial note suggesting an SEO title and description.",
+        "substack": "Format as a web-first newsletter article: an opening note, focused argument, useful headings and a reader-facing close. Do not assume subscribers or paid access.",
     }
     system = (
         "You are an editorial writing assistant. Write an original, useful long-form draft in "
         + language + ". Use only the facts and sources supplied by the user. Never invent data, quotes, "
         "first-hand experience, revenue, rankings or citations. Mark unsupported claims as [VERIFY]. "
         "Keep source URLs in a Sources section; distinguish source observations from the author's own angle. "
-        "Use the search query naturally when relevant; never stuff keywords. "
+        "Use the search query naturally when relevant; never stuff keywords. Keep the supplied creator IP positioning and voice consistent, but never invent credentials, biography, customers, or first-hand experience. "
         "Suggest a specific SEO title and description in a short editorial note before the article, "
         "and mention the canonical URL only if supplied. Return Markdown only. "
         + platform_notes[platform]
@@ -74,6 +89,7 @@ def build_messages(data):
         "search_intent": intent,
         "canonical_original_url": canonical,
         "sources": clean_sources,
+        "creator_ip": ip_profile,
         "target_words": min(2500, max(500, int(data.get("words", 1200)))),
     }, ensure_ascii=False)
     return [{"role": "system", "content": system}, {"role": "user", "content": user}]

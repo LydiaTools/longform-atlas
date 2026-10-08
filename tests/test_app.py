@@ -18,6 +18,7 @@ class MessageTests(unittest.TestCase):
             "intent": "howto",
             "sources": [{"url": "https://example.com/source", "note": "Bag label example"}],
             "outputLanguage": "en",
+            "ipProfile": {"name": "CoverCalc Pro", "type": "tool-builder", "audience": "DIY homeowners", "positioning": "Clear measurements before buying", "proof": "I built a local bag calculator", "voice": "practical", "keywords": ["mulch bags", "garden bed depth"]},
         }
 
     def test_prompt_preserves_source_and_prohibits_invented_claims(self):
@@ -25,6 +26,8 @@ class MessageTests(unittest.TestCase):
         self.assertIn("Never invent data", messages[0]["content"])
         self.assertIn("https://example.com/source", messages[1]["content"])
         self.assertIn("mulch bag calculator", messages[1]["content"])
+        self.assertIn("CoverCalc Pro", messages[1]["content"])
+        self.assertIn("never invent credentials", messages[0]["content"])
 
     def test_missing_angle_and_invalid_source_rejected(self):
         self.data["angle"] = ""
@@ -35,6 +38,10 @@ class MessageTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             build_messages(self.data)
         self.data["sources"] = [{"url": "file:///secret", "note": "no"}]
+        with self.assertRaises(ValueError):
+            build_messages(self.data)
+        self.data["sources"] = []
+        self.data["ipProfile"] = {"keywords": "not a list"}
         with self.assertRaises(ValueError):
             build_messages(self.data)
 
