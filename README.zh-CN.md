@@ -8,7 +8,7 @@
 
 ## 立即体验
 
-**[打开中文网页体验](https://lydiatools.github.io/longform-atlas/?lang=zh)**：无需安装即可试 IP 定位、跨平台选题和离线大纲。网页体验不连接模型，也不提供完整文章生成；完整写稿请下载本地版。
+**[打开中文网页体验](https://lydiatools.github.io/longform-atlas/?lang=zh)**：无需安装即可试 IP 定位、跨平台选题、下载选题计划和制作离线大纲。网页体验不连接模型，也不提供完整文章生成；完整写稿请下载本地版。[反馈体验](https://github.com/LydiaTools/longform-atlas/issues/new)。
 
 **[下载 v0.2.0 ZIP](https://github.com/LydiaTools/longform-atlas/releases/download/v0.2.0/longform-atlas-v0.2.0.zip)** · [查看版本说明](https://github.com/LydiaTools/longform-atlas/releases/tag/v0.2.0)
 
