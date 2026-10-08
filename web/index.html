@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="local-token" content="__LOCAL_TOKEN__"><title>Longform Atlas</title><link rel="stylesheet" href="/style.css"></head>
+<body><div class="app">
+  <header><div class="brand"><span class="symbol" aria-hidden="true">✦</span><div><strong>Longform Atlas</strong><small id="brand-caption"></small></div></div><div class="header-right"><span id="local-badge"></span><button id="language" type="button">中文</button></div></header>
+  <div class="workspace">
+    <aside><div class="aside-top"><span id="workspace-label"></span><span class="rail-number">01 / 03</span></div><ol><li class="current" id="nav-brief"></li><li id="nav-sources"></li><li id="nav-draft"></li></ol><p id="aside-help"></p><a href="https://github.com/LydiaTools/longform-atlas" target="_blank" rel="noreferrer">GitHub</a></aside>
+    <main>
+      <div class="intro"><div class="intro-top"><span id="intro-kicker"></span><span id="edition">v0.1</span></div><h1 id="hero"></h1><p id="hero-copy"></p><button id="sample" class="quiet" type="button"></button></div>
+      <section class="sheet" aria-labelledby="brief-heading"><div class="section-title"><span class="num">01</span><div><h2 id="brief-heading"></h2><p id="brief-help"></p></div></div>
+        <div class="field"><label for="topic" id="topic-label"></label><input id="topic" maxlength="250" autocomplete="off"></div>
+        <div class="grid"><div class="field"><label for="audience" id="audience-label"></label><input id="audience" maxlength="250"></div><div class="field"><label for="platform" id="platform-label"></label><select id="platform"><option value="x">X Articles</option><option value="medium">Medium</option><option value="quora">Quora</option><option value="linkedin">LinkedIn</option><option value="substack">Substack</option></select></div></div>
+        <div class="field"><label for="angle" id="angle-label"></label><textarea id="angle" rows="3" maxlength="1000"></textarea></div>
+        <div class="field"><label for="evidence" id="evidence-label"></label><textarea id="evidence" rows="4" maxlength="8000"></textarea></div>
+        <div class="grid"><div class="field"><label for="query" id="query-label"></label><input id="query" maxlength="120"></div><div class="field"><label for="intent" id="intent-label"></label><select id="intent"><option value="informational">Informational / 信息型</option><option value="comparison">Comparison / 比较型</option><option value="howto">How-to / 教程型</option></select></div></div>
+        <div class="field"><label for="canonical" id="canonical-label"></label><input id="canonical" type="url" placeholder="https://your-site.example/original-article"></div>
+      </section>
+      <section class="sheet" aria-labelledby="sources-heading"><div class="section-title"><span class="num">02</span><div><h2 id="sources-heading"></h2><p id="sources-help"></p></div></div>
+        <div id="sources"></div><button id="add-source" class="quiet" type="button"></button>
+      </section>
+      <section class="sheet" aria-labelledby="draft-heading"><div class="section-title"><span class="num">03</span><div><h2 id="draft-heading"></h2><p id="draft-help"></p></div></div>
+        <div class="grid"><div class="field"><label for="output-language" id="output-language-label"></label><select id="output-language"><option value="en">English</option><option value="zh">中文</option></select></div><div class="field"><label for="words" id="words-label"></label><input id="words" type="number" min="500" max="2500" value="1200"></div></div>
+        <div class="provider"><div class="provider-heading"><h3 id="provider-title"></h3><p id="provider-help"></p></div><div class="field"><label for="base-url" id="base-label"></label><input id="base-url" type="url" placeholder="https://api.example.com/v1" autocomplete="off"></div><div class="grid"><div class="field"><label for="model" id="model-label"></label><input id="model" autocomplete="off"></div><div class="field"><label for="api-key" id="key-label"></label><input id="api-key" type="password" autocomplete="off"></div></div></div>
+        <div class="controls"><button id="outline" class="secondary" type="button"></button><button id="generate" class="primary" type="button"></button></div><p id="status" role="status" aria-live="polite"></p>
+        <div class="output-head"><label for="draft" id="draft-label"></label><span id="draft-state"></span></div><textarea id="draft" rows="24" spellcheck="true"></textarea><div class="controls"><button id="copy" class="secondary" type="button"></button><button id="download" class="secondary" type="button"></button><button id="audit-button" class="secondary" type="button"></button></div><div id="audit" role="status" aria-live="polite"></div><p class="end-note" id="review-note"></p>
+      </section>
+    </main>
+  </div><footer><span id="footer-left"></span><span>LydiaTools · MIT</span></footer>
+</div><script src="/app.js"></script></body></html>
