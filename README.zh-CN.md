@@ -8,7 +8,7 @@
 
 ## 立即体验
 
-**[打开中文网页体验](https://lydiatools.github.io/longform-atlas/?lang=zh)**：无需安装即可试 IP 定位、跨平台选题、下载选题计划和制作离线大纲。网页体验不连接模型，也不提供完整文章生成；完整写稿请下载本地版。[反馈具体使用过程](https://github.com/LydiaTools/longform-atlas/issues/new?template=workflow-observation.yml)。
+**[打开中文网页体验](https://lydiatools.github.io/longform-atlas/?lang=zh&utm_source=github&utm_medium=referral&utm_campaign=longform_readme&utm_content=quick_start_zh)**：无需安装即可试 IP 定位、跨平台选题、下载选题计划和制作离线大纲。网页体验不连接模型，也不提供完整文章生成；完整写稿请下载本地版。[反馈具体使用过程](https://github.com/LydiaTools/longform-atlas/issues/new?template=workflow-observation.yml)。
 
 **[下载 v0.2.0 ZIP](https://github.com/LydiaTools/longform-atlas/releases/download/v0.2.0/longform-atlas-v0.2.0.zip)** · [查看版本说明](https://github.com/LydiaTools/longform-atlas/releases/tag/v0.2.0)
 
@@ -28,4 +28,4 @@ Windows 可双击 `start-windows.bat`；macOS 可运行 `start-mac.command`。
 
 平台分工：**X Articles** 适合观点鲜明的分节长文，发布需符合条件的订阅；**Quora Answers** 要直接回答具体问题，披露相关利益关系；**Medium** 适合常青文章，转载时可设置 canonical；**LinkedIn Articles** 适合专业经验、可设置 SEO 标题和描述；**Substack** 适合连载文章与 newsletter。工具只负责研究、写作和导出，不代替账号资格判断，也不承诺收录、排名或收益。相关规则见[英文 README 的官方链接](README.md#platform-fit)。
 
-IP 定位、选题与草稿存于当前浏览器，本地服务器只监听 `127.0.0.1`。API 密钥不写进本地存储；点击生成时会发送给你填写的模型服务商。
+IP 定位、选题与草稿存于当前浏览器，本地服务器只监听 `127.0.0.1`。API 密钥不写进本地存储；点击生成时会发送给你填写的模型服务商。GitHub Pages 在线体验页仅在明确同意后加载 Google Analytics，用于基础访问、来源及前往 LydiaTools GitHub 页面的点击统计；滚动和通用出站点击等自动增强测量已关闭。统计代码不发送草稿、证据、来源字段或 API 密钥。本地版不加载 Google Analytics。

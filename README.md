@@ -24,11 +24,12 @@ The built-in sample demonstrates the workflow; it is not a claim of published re
 - Offline outline, optional full draft through your own model API / 离线大纲或自带模型 API 生成长文。
 - Editable Markdown, copy/download and a basic structure check / 编辑、导出和结构检查。
 - Local browser storage for the project; API key stays in the current page only / 项目存于本机浏览器，API 密钥不持久化。
+- The hosted GitHub Pages demo loads Google Analytics only after consent for basic visit/referral measurement and clicks to LydiaTools GitHub pages. Automatic enhanced measurement (including scroll and generic outbound-click events) is disabled. The analytics code does not send draft, evidence, source-field, or API-key values. The downloadable local app does not load Google Analytics. / GitHub Pages 在线演示页仅在明确同意后加载 Google Analytics，用于基础访问、来源及前往 LydiaTools GitHub 页面的点击统计；滚动和通用出站点击等自动增强测量已关闭。统计代码不发送草稿、证据、来源字段或 API 密钥；本地版不加载 Google Analytics。
 - No account connection, auto-publishing, scheduling or fabricated analytics / 不登录平台、不自动发布、不编造流量效果。
 
 ## Quick start
 
-**[Try the browser demo](https://lydiatools.github.io/longform-atlas/)** — plan a creator IP, build platform-specific topics, download the plan and export an offline outline. The public demo has no model connection or article-generation button; use the local app for full AI drafts. [Share a workflow observation](https://github.com/LydiaTools/longform-atlas/issues/new?template=workflow-observation.yml).
+**[Try the browser demo](https://lydiatools.github.io/longform-atlas/?utm_source=github&utm_medium=referral&utm_campaign=longform_readme&utm_content=quick_start_en)** — plan a creator IP, build platform-specific topics, download the plan and export an offline outline. The public demo has no model connection or article-generation button; use the local app for full AI drafts. [Share a workflow observation](https://github.com/LydiaTools/longform-atlas/issues/new?template=workflow-observation.yml).
 
 **[Download v0.2.0 ZIP](https://github.com/LydiaTools/longform-atlas/releases/download/v0.2.0/longform-atlas-v0.2.0.zip)** · [Release notes](https://github.com/LydiaTools/longform-atlas/releases/tag/v0.2.0)
 

@@ -11,7 +11,7 @@ const I18N={
     providerTitle:'Optional writing model',providerHelp:'The API key is sent only to your chosen provider when you press Generate. It is never saved by this app.',baseLabel:'OpenAI-compatible base URL',modelLabel:'Model',keyLabel:'API key',
     outline:'Build offline outline',generate:'Generate article',draftLabel:'Editable Markdown draft',copy:'Copy Markdown',download:'Download .md',auditButton:'Check draft',
     reviewNote:'Review every claim and source, then publish manually in your own account. X Article publishing requires an eligible X subscription.',
-    footerLeft:'Your work stays in this browser. No account connection or scheduled posting.',source:'Source',note:'Evidence note',sourceEmpty:'Add a URL or evidence note.',
+    footerLeft:'Your work stays in this browser. The hosted demo uses optional visit analytics after consent. No account connection or scheduled posting.',source:'Source',note:'Evidence note',sourceEmpty:'Add a URL or evidence note.',
     missing:'Add a topic, reader and original angle first.',outlineReady:'Outline ready. Add verified evidence and write your original prose.',generating:'Generating with your chosen model…',generated:'Draft ready. Verify each claim before use.',
     apiMissing:'Enter provider URL, model and API key to generate a full article.',copied:'Markdown copied.',downloaded:'Markdown downloaded.',sampleLoaded:'Sample brief loaded. It contains no claimed performance data.',
     sampleTopic:'How should a homeowner estimate mulch bags for a garden bed?',sampleAudience:'DIY homeowners planning a small garden project',sampleAngle:'Explain the measurement decisions before giving a bag count, so readers can spot missing inputs.',sampleEvidence:'Original example: measure the bed area, choose a target depth, then check the bag volume printed on the product. No brand-specific conversion is assumed.',
@@ -30,7 +30,7 @@ const I18N={
     providerTitle:'可选写作模型',providerHelp:'仅当你点击“生成文章”时，密钥才会发给你选择的服务商；本工具不保存密钥。',baseLabel:'兼容 OpenAI 的基础 URL',modelLabel:'模型',keyLabel:'API 密钥',
     outline:'离线生成大纲',generate:'生成文章',draftLabel:'可编辑的 Markdown 草稿',copy:'复制 Markdown',download:'下载 .md',auditButton:'检查草稿',
     reviewNote:'核对所有事实与来源，再到自己的平台账号手动发布。发布 X Articles 需要符合条件的订阅。',
-    footerLeft:'内容只保存在此浏览器；不连接平台账号，也不定时发布。',source:'来源',note:'证据说明',sourceEmpty:'添加链接或证据说明。',
+    footerLeft:'内容只保存在此浏览器；在线演示页仅在同意后启用访问统计。不连接平台账号，也不定时发布。',source:'来源',note:'证据说明',sourceEmpty:'添加链接或证据说明。',
     missing:'先填写主题、读者和独特角度。',outlineReady:'大纲已生成。补充核实的证据，写入你自己的表达。',generating:'正在用你指定的模型生成…',generated:'初稿完成。使用前请逐条核实事实。',
     apiMissing:'填写服务商 URL、模型和 API 密钥后才能生成完整文章。',copied:'已复制 Markdown。',downloaded:'已下载 Markdown。',sampleLoaded:'已载入示例选题，不包含虚构的效果数据。',
     sampleTopic:'家庭园艺怎么估算一块花坛需要多少袋覆盖物？',sampleAudience:'准备自己动手的小型家庭花园主人',sampleAngle:'先解释测量和规格选择，再给出袋数计算思路，让读者发现输入缺口。',sampleEvidence:'原创示例：测量花坛面积、选定铺设厚度，再查看产品包装标注的每袋体积。不预设任何品牌的换算关系。',
@@ -70,7 +70,8 @@ function ipProfile(){return {name:$('ip-name').value.trim(),type:$('ip-type').va
 function updateIpPreview(){$('ip-preview-text').textContent=$('ip-positioning').value.trim()||tr('ipPreviewEmpty');}
 function setLanguage(next){
   lang=next;document.documentElement.lang=lang;$('language').textContent=lang==='en'?'中文':'English';for(const [id,key] of Object.entries(ids))$(id).textContent=tr(key);
-  $('visual-tool-link').href=lang==='en'?'https://lydiatools.github.io/aspectory/':'https://lydiatools.github.io/aspectory/zh.html';
+  const visualCampaign='utm_source=longform_atlas&utm_medium=referral&utm_campaign=lydiatools_cross_project&utm_content=visual_tool_link';
+  $('visual-tool-link').href=lang==='en'?`https://lydiatools.github.io/aspectory/?${visualCampaign}`:`https://lydiatools.github.io/aspectory/zh.html?${visualCampaign}`;
   if(staticDemo){$('local-badge').textContent=tr('demoBadge');$('demo-note').firstChild.textContent=tr('demoNote')+' ';$('demo-download').textContent=tr('demoDownload');$('demo-feedback').textContent=tr('demoFeedback');$('draft-help').textContent=tr('demoDraftHelp');}
   const typeKeys=['ipTypePractitioner','ipTypeBuilder','ipTypeResearch','ipTypeBuyer'];[...$('ip-type').options].forEach((o,i)=>o.textContent=tr(typeKeys[i]));
   const voiceKeys=['ipVoicePractical','ipVoiceAnalytical','ipVoiceWarm'];[...$('ip-voice').options].forEach((o,i)=>o.textContent=tr(voiceKeys[i]));
